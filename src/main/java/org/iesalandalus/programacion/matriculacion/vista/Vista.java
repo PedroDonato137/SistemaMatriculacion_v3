@@ -45,7 +45,7 @@ public class Vista {
 
 
     //Metodos
-    private static void ejecutarOpcion(Opcion opcion) throws OperationNotSupportedException {
+    public static void ejecutarOpcion(Opcion opcion) throws OperationNotSupportedException {
 
         switch (opcion) {
             //Alumnos
@@ -81,7 +81,7 @@ public class Vista {
     /*------------------------------------------------ ALUMNOS ------------------------------------------------------*/
     /*---------------------------------------------------------------------------------------------------------------*/
 
-    private static void insertarAlumno(){
+    public static void insertarAlumno(){
 
         Alumno alumno = new Alumno(Consola.leerAlumno());
 
@@ -90,7 +90,7 @@ public class Vista {
 
     }
 
-    private static void buscarAlumno() {
+    public static void buscarAlumno() {
         Alumno alumno = new Alumno(Consola.getAlumnoPorDni());
         Alumno alumnoBuscado = null;
 
@@ -103,12 +103,12 @@ public class Vista {
         }
     }
 
-    private static void borrarAlumno() throws OperationNotSupportedException {
+    public static void borrarAlumno() throws OperationNotSupportedException {
 
         controller.borrar(Consola.getAlumnoPorDni());
     }
 
-    private static void mostarAlumnos(){
+    public static void mostarAlumnos(){
 
         ArrayList<Alumno> alumnosMostar = controller.getAlumnos();
 
@@ -127,7 +127,7 @@ public class Vista {
     /*---------------------------------------------- ASIGNATURAS ----------------------------------------------------*/
     /*---------------------------------------------------------------------------------------------------------------*/
 
-    private static void insertarAsignatura(){
+    public static void insertarAsignatura(){
         CicloFormativo cicloFormativoAsignatura = Consola.getCicloFormativoPorCodigo();
         CicloFormativo ciclosExistentes = controller.buscar(cicloFormativoAsignatura);
 
@@ -140,7 +140,7 @@ public class Vista {
         }
     }
 
-    private static void buscarAsignatura(){
+    public static void buscarAsignatura(){
 
         Asignatura asignatura = new Asignatura(Consola.getAsignaturaPorCodigo());
         Asignatura asigBuscado = null;
@@ -154,11 +154,11 @@ public class Vista {
         }
     }
 
-    private static void borrarAsignatura() throws OperationNotSupportedException {
+    public static void borrarAsignatura() throws OperationNotSupportedException {
         controller.borrar(Consola.getAsignaturaPorCodigo());
     }
 
-    private static void mostrarAsignaturas(){
+    public static void mostrarAsignaturas(){
 
         Consola.mostrarAsignautras(controller.getAsignaturas());
     }
@@ -166,7 +166,7 @@ public class Vista {
     /*---------------------------------------------------------------------------------------------------------------*/
     /*----------------------------------------- CICLOS FORMATIVOS ---------------------------------------------------*/
     /*---------------------------------------------------------------------------------------------------------------*/
-    private static void insertarCicloFormativo(){
+    public static void insertarCicloFormativo(){
 
         CicloFormativo cicloFormativo = new CicloFormativo(Consola.leerCicloFormativo());
 
@@ -175,7 +175,7 @@ public class Vista {
 
     }
 
-    private static void buscarCicloFormativo (){
+    public static void buscarCicloFormativo (){
 
         CicloFormativo cicloFormativo = new CicloFormativo(Consola.getCicloFormativoPorCodigo());
         CicloFormativo cicloBuscado = null;
@@ -189,11 +189,11 @@ public class Vista {
         }
     }
 
-    private static void borrarCicloFormativo() throws OperationNotSupportedException {
+    public static void borrarCicloFormativo() throws OperationNotSupportedException {
         controller.borrar(Consola.getCicloFormativoPorCodigo());
     }
 
-    private static void mostarCiclosFormativos(){
+    public static void mostarCiclosFormativos(){
 
         Consola.mostrarCiclosFormativos(controller.getCicloformativos());
 
@@ -203,7 +203,7 @@ public class Vista {
     /*---------------------------------------------- MATRICULAS -----------------------------------------------------*/
     /*---------------------------------------------------------------------------------------------------------------*/
 
-    private static void insertarMatricula() throws OperationNotSupportedException {
+    public static void insertarMatricula() throws OperationNotSupportedException {
 
         // Conseguir el usuario
         Alumno alumnoMatriculado = Consola.getAlumnoPorDni();
@@ -223,7 +223,7 @@ public class Vista {
         System.out.println("Matricula insertado correctamente");
     }
 
-    private static void buscarMatricula(){
+    public static void buscarMatricula(){
 
         Matricula matricula = new Matricula(Consola.getMatriculaPorIdentificador());
         Matricula matriculaBuscado = null;
@@ -237,13 +237,13 @@ public class Vista {
         }
     }
 
-    private static void anularMatricula() throws OperationNotSupportedException {
+    public static void anularMatricula() throws OperationNotSupportedException {
 
         controller.borrar(Consola.getMatriculaPorIdentificador());
 
     }
 
-    private static void mostrarMatriculas() {
+    public static void mostrarMatriculas() {
 
         ArrayList<Matricula> matriculaMostar =  controller.getMatriculas();
 
@@ -256,7 +256,7 @@ public class Vista {
         }
     }
 
-    private static void mostrarMatriculasPorAlumno(){
+    public static void mostrarMatriculasPorAlumno(){
 
         Alumno alumnoBuscado = Consola.getAlumnoPorDni();
         Alumno nuevoAlumno = controller.buscar(alumnoBuscado);
@@ -271,7 +271,7 @@ public class Vista {
         }
     }
 
-    private static void mostrarMatriculasPorCicloFormativo(){
+    public static void mostrarMatriculasPorCicloFormativo(){
 
         CicloFormativo cicloFormativoMostrar = Consola.getCicloFormativoPorCodigo();
         ArrayList<Matricula> matriculaMostrar = controller.getMatriculas(cicloFormativoMostrar);
@@ -285,7 +285,7 @@ public class Vista {
         }
     }
 
-    private static void mostrarMatriculasPorCursoAcademico(){
+    public static void mostrarMatriculasPorCursoAcademico(){
 
         System.out.print("Introduzca el curso academicio:");
         String cursoAcademico = Entrada.cadena();
