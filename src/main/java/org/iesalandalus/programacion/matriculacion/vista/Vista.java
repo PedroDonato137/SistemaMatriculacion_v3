@@ -10,7 +10,7 @@ import org.iesalandalus.programacion.utilidades.Entrada;
 import javax.naming.OperationNotSupportedException;
 import java.util.*;
 
-public class Vista {
+public class Vista{
 
     private static Controlador controller;
 
