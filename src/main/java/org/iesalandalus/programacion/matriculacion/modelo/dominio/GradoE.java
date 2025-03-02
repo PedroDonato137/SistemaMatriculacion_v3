@@ -22,7 +22,7 @@ public class GradoE extends Grado{
     @Override
     public void setNumAnios(int numAnios) {
         if(numAnios !=  1){
-            System.out.println("ERROR: Los años del grado de este tipo siempre sera 1");
+            throw new IllegalArgumentException("ERROR: Los años del grado de este tipo siempre sera 1");
         }else{
             this.numAnios = numAnios;
         }
