@@ -13,6 +13,12 @@ import java.util.*;
 public class Vista{
 
     private static Controlador controller;
+    private static Vista vista;
+
+    // Constructor de la clase
+    public Vista() {
+        Opcion.setVista(vista);
+    }
 
     public void setController(Controlador controller)
     {
@@ -30,7 +36,7 @@ public class Vista{
         do {
             Consola.mostrarMenu();
             opcionElegida = Consola.elegirOpcion();
-            ejecutarOpcion(opcionElegida);
+            opcionElegida.ejecutar(); // Ejecutar opcion
 
             System.out.println("\n\t\tPRESIONE ENTER PARA CONTINUAR..."); //Mensaje en pantalla
             continuar.nextLine();
@@ -41,40 +47,6 @@ public class Vista{
     {
         controller.terminar();
         System.out.println("Cerramos la vista");
-    }
-
-
-    //Metodos
-    public static void ejecutarOpcion(Opcion opcion) throws OperationNotSupportedException {
-
-        switch (opcion) {
-            //Alumnos
-            case INSERTAR_ALUMNO -> insertarAlumno();
-            case BUSCAR_ALUMNO -> buscarAlumno();
-            case BORRAR_ALUMNO -> borrarAlumno();
-            case MOSTRAR_ALUMNOS -> mostarAlumnos();
-
-            //Ciclos Formativos
-            case INSERTAR_CICLO_FORMATIVO -> insertarCicloFormativo();
-            case BUSCAR_CICLO_FORMATIVO -> buscarCicloFormativo();
-            case BORRAR_CICLO_FORMATIVO -> borrarCicloFormativo();
-            case MOSTRAR_CICLOS_FORMATIVOS -> mostarCiclosFormativos();
-
-            //Asignaturas
-            case INSERTAR_ASIGNATURA -> insertarAsignatura();
-            case BUSCAR_ASIGNATURA -> buscarAsignatura();
-            case BORRAR_ASIGNATURA -> borrarAsignatura();
-            case MOSTRAR_ASIGNATURAS -> mostrarAsignaturas();
-
-            //Matriculas
-            case INSERTAR_MATRICULA -> insertarMatricula();
-            case BUSCAR_MATRICULA -> buscarMatricula();
-            case MOSTRAR_MATRICULAS -> mostrarMatriculas();
-            case MOSTRAR_MATRICULAS_POR_ALUMNO -> mostrarMatriculasPorAlumno();
-            case MOSTRAR_MATRICULAS_POR_CICLO_FORMATIVO -> mostrarMatriculasPorCicloFormativo();
-            case MOSTRAR_MATRICULAS_POR_CURSO_ACADEMICO -> mostrarMatriculasPorCursoAcademico();
-            case ANULAR_MATRICULA -> anularMatricula();
-        }
     }
 
     /*---------------------------------------------------------------------------------------------------------------*/

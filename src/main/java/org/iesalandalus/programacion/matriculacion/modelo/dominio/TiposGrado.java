@@ -2,7 +2,7 @@ package org.iesalandalus.programacion.matriculacion.modelo.dominio;
 
 public enum TiposGrado {
     GRADOD("GRADOD"),
-    GRADOE("GRADOD");
+    GRADOE("GRADOE");
 
     private final String cadenaAMostrar;
 
