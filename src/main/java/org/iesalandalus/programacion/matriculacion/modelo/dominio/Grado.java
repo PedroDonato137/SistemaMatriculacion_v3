@@ -20,9 +20,7 @@ public abstract class Grado {
         this.nombre = nombre;
     }
 
-    public void setNumAnios(int numAnios) {
-        this.numAnios = numAnios;
-    }
+    public abstract void setNumAnios(int numAnios);
 
     private void setIniciales() {
 

@@ -26,7 +26,7 @@ public class Modelo {
 
 
     // Datos ficticios de inicio para no estar todo el rato ingresando datos(Borrar)
-    public static void datosInicio() throws OperationNotSupportedException {
+    /*public static void datosInicio() throws OperationNotSupportedException {
         // Datos de prueba:
         String cursoAcademico = "24-25";
         //Fecha matricula
@@ -59,14 +59,14 @@ public class Modelo {
         asignaturas.insertar(asignaturaFicticia3);
         matriculas.insertar(matricula1);
 
-    }
+    }*/
 
     public void comenzar() throws OperationNotSupportedException {
         alumnos = new Alumnos();
         matriculas = new Matriculas();
         asignaturas = new Asignaturas();
         cicloFormativos = new CiclosFormativos();
-        datosInicio(); // Datos ficticios
+        //datosInicio(); // Datos ficticios
     }
 
     public static void terminar(){
