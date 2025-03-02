@@ -2,7 +2,6 @@ package org.iesalandalus.programacion.matriculacion.vista;
 
 import org.iesalandalus.programacion.matriculacion.modelo.dominio.*;
 import org.iesalandalus.programacion.utilidades.Entrada;
-import javax.naming.OperationNotSupportedException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -108,20 +107,59 @@ public class Consola {
         return fecha;
     }
 
-    public static Grado leerGrado(){
+    public static TiposGrado leerTipoGrado(){
 
-        int opcionGrado;
+        int opcionTipo;
+
         System.out.println("Seleccione un grado de la lista:");
-        for (Grado grado : Grado.values()) {
-            System.out.println(grado.imprimir());
+        for (TiposGrado tiposGrado : TiposGrado.values()) {
+            System.out.println(tiposGrado.imprimir());
         }
 
         do {
             System.out.print("Introduce el número correspondiente: ");
-            opcionGrado = Entrada.entero();
-        } while (opcionGrado < 0 || opcionGrado > Grado.values().length);
+            opcionTipo = Entrada.entero();
+        } while (opcionTipo < 0 || opcionTipo > TiposGrado.values().length);
 
-        return Grado.values()[opcionGrado];
+        return TiposGrado.values()[opcionTipo];
+    }
+
+    public static Modalidad leerModalidad(){
+
+        int opcionModalidad;
+
+        System.out.println("Seleccione un grado de la lista:");
+        for (Modalidad modalidad : Modalidad.values()) {
+            System.out.println(modalidad.imprimir());
+        }
+
+        do {
+            System.out.print("Introduce el número correspondiente: ");
+            opcionModalidad = Entrada.entero();
+        } while (opcionModalidad < 0 || opcionModalidad > Modalidad.values().length);
+
+        return Modalidad.values()[opcionModalidad];
+    }
+
+    public static Grado leerGrado(){
+
+        TiposGrado tiposGrado;
+
+        System.out.print("Introduzca el nombre del grado: ");
+        String nombreGrado = Entrada.cadena();
+        System.out.print("Introduzca numero de años: ");
+        int numAnios = Entrada.entero();
+
+        tiposGrado = leerTipoGrado();
+
+        if(tiposGrado.equals(TiposGrado.GRADOD)){
+            Modalidad modalidad = leerModalidad();
+            return new GradoD(nombreGrado, numAnios, modalidad);
+        }else{
+            System.out.print("Introduzca numero de edición: ");
+            int numEdiciones = Entrada.entero();
+            return new GradoE(nombreGrado, numAnios, numEdiciones);
+        }
     }
 
     /*---------------------------------------------------------------------------------------------------------------*/
@@ -185,7 +223,7 @@ public class Consola {
         int codigoCiclo;
         // Crear datos ficticios para el ciclo formativo
         String familiaProfesionalCiclo = "Familia profesional Ficticia";
-        Grado gradoCiclo = Grado.GDCFGB;
+        Grado gradoCiclo = new GradoE("Grado Ficticio", 1, 1);
         String nombreCiclo = "Ficticio";
         int horasCiclo = 25;
 
@@ -286,7 +324,8 @@ public class Consola {
         Curso cursoAsignatura = Curso.PRIMERO;
         int horasDesdobleAsignatura = 2;
         EspecialidadProfesorado especialidadProfesoradoAsignatura = EspecialidadProfesorado.INFORMATICA;
-        CicloFormativo cicloFormativoAsignatura = new CicloFormativo(1001, "Informática y Comunicaciones", Grado.GDCFGB, "DAW", 500 );
+        Grado gradoCiclo = new GradoE("Grado Ficticio", 1, 1);
+        CicloFormativo cicloFormativoAsignatura = new CicloFormativo(1001, "Informática y Comunicaciones", gradoCiclo, "DAW", 500 );
 
         do {
             System.out.print("Introduce el Codigo de la asignatura: ");
@@ -393,7 +432,9 @@ public class Consola {
 
         Alumno alumno = new Alumno("Pedro", "54119272L", "pedrodonatogarcia@gmail.com", "609822699", fechaNacimientoFicticio);
         ArrayList<Asignatura> coleccionAsignaturas = new ArrayList<>();
-        CicloFormativo cicloFicticio = new CicloFormativo(1001, "Informatica", Grado.GDCFGS, "Informatica", 2000);
+
+        Grado gradoCiclo = new GradoE("Grado Ficticio", 1, 1);
+        CicloFormativo cicloFicticio = new CicloFormativo(1001, "Informatica", gradoCiclo, "Informatica", 2000);
         Asignatura asignaturaFicticia = new Asignatura("1001", "Base Datos", 100, Curso.PRIMERO, 2, EspecialidadProfesorado.INFORMATICA, cicloFicticio);
         coleccionAsignaturas.add(asignaturaFicticia);
 

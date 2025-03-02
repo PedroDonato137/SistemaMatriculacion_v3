@@ -26,7 +26,7 @@ public class Modelo {
 
 
     // Datos ficticios de inicio para no estar todo el rato ingresando datos(Borrar)
-    /*public static void datosInicio() throws OperationNotSupportedException {
+    public static void datosInicio() throws OperationNotSupportedException {
         // Datos de prueba:
         String cursoAcademico = "24-25";
         //Fecha matricula
@@ -41,7 +41,9 @@ public class Modelo {
         Alumno alumno1 = new Alumno("Pedro", "54119272L", "pedrodonatogarcia@gmail.com", "609822699", fechaNacimientoFicticio);
         ArrayList<Asignatura> coleccionAsignaturas1 = new ArrayList<>();
 
-        CicloFormativo cicloFicticio1 = new CicloFormativo(1001, "Informatica", Grado.GDCFGS, "Informatica", 2000);
+        Grado gradoCiclo = new GradoE("Grado Ficticio", 1, 1);
+
+        CicloFormativo cicloFicticio1 = new CicloFormativo(1001, "Informatica", gradoCiclo, "Informatica", 2000);
         Asignatura asignaturaFicticia1 = new Asignatura("1", "programacion", 100, Curso.PRIMERO, 2, EspecialidadProfesorado.INFORMATICA, cicloFicticio1);
         Asignatura asignaturaFicticia2 = new Asignatura("2", "Base Datos", 100, Curso.PRIMERO, 2, EspecialidadProfesorado.INFORMATICA, cicloFicticio1);
         Asignatura asignaturaFicticia3 = new Asignatura("3", "FOL", 100, Curso.PRIMERO, 2, EspecialidadProfesorado.INFORMATICA, cicloFicticio1);
@@ -59,14 +61,14 @@ public class Modelo {
         asignaturas.insertar(asignaturaFicticia3);
         matriculas.insertar(matricula1);
 
-    }*/
+    }
 
     public void comenzar() throws OperationNotSupportedException {
         alumnos = new Alumnos();
         matriculas = new Matriculas();
         asignaturas = new Asignaturas();
         cicloFormativos = new CiclosFormativos();
-        //datosInicio(); // Datos ficticios
+        datosInicio(); // Datos ficticios
     }
 
     public static void terminar(){
