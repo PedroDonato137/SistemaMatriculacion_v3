@@ -17,7 +17,7 @@ public class Vista{
 
     // Constructor de la clase
     public Vista() {
-        Opcion.setVista(vista);
+        Opcion.setVista(this.vista);
     }
 
     public void setController(Controlador controller)
@@ -46,6 +46,7 @@ public class Vista{
     public void terminar()
     {
         controller.terminar();
+        vista.terminar();
         System.out.println("Cerramos la vista");
     }
 
